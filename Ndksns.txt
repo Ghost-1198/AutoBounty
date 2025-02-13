@@ -1,0 +1,534 @@
+getgenv().Config = {
+    AutoChooseTeam = true,  
+    Team = "Pirates"         --  "Marines"
+}
+
+local function setTeam(teamName)
+    local args = {
+        "SetTeam",
+        teamName
+    }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+end
+
+spawn(function()
+    while wait() do
+        local repStorage = game:GetService("ReplicatedStorage")
+        if repStorage:FindFirstChild("Remotes") and repStorage.Remotes:FindFirstChild("CommF_") then
+            if getgenv().Config.AutoChooseTeam then
+                setTeam(getgenv().Config.Team)
+            end
+            break
+        end
+    end
+end)
+local ScreenGui = Instance.new("ScreenGui")
+local DraggableFrame = Instance.new("ImageLabel")
+local PingLabel = Instance.new("TextLabel")
+local timeButton = Instance.new("TextLabel")
+local Statusbf = Instance.new("TextLabel")
+local FpsLabel = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextLabel")
+local CloseButton = Instance.new("TextButton")
+local MatsuneHub = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+DraggableFrame.Name = "DraggableFrame"
+DraggableFrame.Parent = ScreenGui
+DraggableFrame.Active = true
+DraggableFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DraggableFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+DraggableFrame.BorderSizePixel = 0
+DraggableFrame.Position = UDim2.new(0.794261038, 0, 0.272435874, 0)
+DraggableFrame.Size = UDim2.new(0, 175, 0, 167)
+DraggableFrame.Image = "rbxassetid://139465518204541"
+
+PingLabel.Name = "1"
+PingLabel.Parent = DraggableFrame
+PingLabel.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+PingLabel.BackgroundTransparency = 1.000
+PingLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PingLabel.BorderSizePixel = 0
+PingLabel.Position = UDim2.new(0.10361428565, 0, 0.364620745, 0)
+PingLabel.Size = UDim2.new(0, 33, 0, 24)
+PingLabel.Font = Enum.Font.FredokaOne
+PingLabel.Text = "Ping"
+PingLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
+PingLabel.TextSize = 12.000
+
+timeButton.Name = "3"
+timeButton.Parent = DraggableFrame
+timeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+timeButton.BackgroundTransparency = 1.000
+timeButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+timeButton.BorderSizePixel = 0
+timeButton.Position = UDim2.new(0.35571428565, 0, 0.655638754, 0)
+timeButton.Size = UDim2.new(0, 32, 0, 24)
+timeButton.Font = Enum.Font.FredokaOne
+timeButton.Text = "Time"
+timeButton.TextColor3 = Color3.fromRGB(85, 255, 127)
+timeButton.TextSize = 12.000
+
+Statusbf.Name = "4"
+Statusbf.Parent = DraggableFrame
+Statusbf.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Statusbf.BackgroundTransparency = 1.000
+Statusbf.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Statusbf.BorderSizePixel = 0
+Statusbf.Position = UDim2.new(0.34571428565, 0, 0.756561335, 0)
+Statusbf.Size = UDim2.new(0, 32, 0, 24)
+Statusbf.Font = Enum.Font.FredokaOne
+Statusbf.Text = "4"
+Statusbf.TextColor3 = Color3.fromRGB(170, 255, 255)
+Statusbf.TextSize = 12.000
+
+FpsLabel.Name = "5"
+FpsLabel.Parent = DraggableFrame
+FpsLabel.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+FpsLabel.BackgroundTransparency = 1.000
+FpsLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FpsLabel.BorderSizePixel = 0
+FpsLabel.Position = UDim2.new(0.03311428565, 0, 0.511926174, 0)
+FpsLabel.Size = UDim2.new(0, 32, 0, 24)
+FpsLabel.Font = Enum.Font.FredokaOne
+FpsLabel.Text = "Fps"
+FpsLabel.TextColor3 = Color3.fromRGB(255, 85, 255)
+FpsLabel.TextSize = 12.000
+
+TextLabel.Parent = DraggableFrame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.184165731, 0, -0.00474301632, 0)
+TextLabel.Rotation = 10.000
+TextLabel.Size = UDim2.new(0, 168, 0, 47)
+TextLabel.Font = Enum.Font.LuckiestGuy
+TextLabel.Text = "Matsune Hub"
+TextLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+TextLabel.TextSize = 16.000
+
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = DraggableFrame
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.BackgroundTransparency = 1.000
+CloseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CloseButton.BorderSizePixel = 0
+CloseButton.Size = UDim2.new(0, 31, 0, 15)
+CloseButton.Font = Enum.Font.SourceSans
+CloseButton.Text = "x"
+CloseButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+CloseButton.TextSize = 23.000
+
+MatsuneHub.Name = "2"
+MatsuneHub.Parent = DraggableFrame
+MatsuneHub.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+MatsuneHub.BackgroundTransparency = 1.000
+MatsuneHub.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MatsuneHub.BorderSizePixel = 0
+MatsuneHub.Position = UDim2.new(0.14571428565, 0, 0.218512982, 0)
+MatsuneHub.Size = UDim2.new(0, 32, 0, 24)
+MatsuneHub.Font = Enum.Font.FredokaOne
+MatsuneHub.Text = "Auto Find Fruit"
+MatsuneHub.TextColor3 = Color3.fromRGB(255, 0, 0)
+MatsuneHub.TextSize = 12.000
+
+-- Scripts:
+
+local function MQRTSTE_fake_script() -- DraggableFrame.LocalScript 
+	local script = Instance.new('LocalScript', DraggableFrame)
+
+	local frame = script.Parent
+	local closeButton = frame:FindFirstChild("CloseButton")
+	local UserInputService = game:GetService("UserInputService")
+	
+	-- Bi?n luu tr?ng th�i k�o th?
+	local dragging = false
+	local dragStart = nil
+	local startPos = nil
+	local lastInput = nil
+	
+	-- X? l� khi b?t d?u k�o
+	local function onInputBegan(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = frame.Position
+			lastInput = input
+		end
+	end
+	
+local function onInputChanged(input)
+		if dragging and input == lastInput then
+			local delta = input.Position - dragStart
+			frame.Position = UDim2.new(
+				startPos.X.Scale, startPos.X.Offset + delta.X,
+				startPos.Y.Scale, startPos.Y.Offset + delta.Y
+			)
+		end
+	end
+	
+	local function onInputEnded(input)
+		if input == lastInput then
+			dragging = false
+		end
+	end
+	
+	frame.InputBegan:Connect(onInputBegan)
+	UserInputService.InputChanged:Connect(onInputChanged)
+	UserInputService.InputEnded:Connect(onInputEnded)
+	
+	if closeButton then
+		closeButton.MouseButton1Click:Connect(function()
+			frame.Visible = false
+		end)
+	end
+	
+end
+coroutine.wrap(MQRTSTE_fake_script)()
+
+local RunService = game:GetService("RunService")
+RunService.RenderStepped:Connect(function(frame)
+    FpsLabel.Text = "FPS: " .. math.round(1 / frame)
+end)
+
+local Stats = game:GetService("Stats")
+RunService.RenderStepped:Connect(function()
+    local pingValue = Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
+    PingLabel.Text = "Ping: " .. math.round(pingValue) .. " ms"
+end)
+local function setTime()
+    local GameTime = math.floor(workspace.DistributedGameTime + 0.5)
+    local Hour = math.floor(GameTime / (60^2)) % 24
+    local Minute = math.floor(GameTime / 60) % 60
+    local Second = math.floor(GameTime) % 60
+    timeButton.Text = "Hour: " .. Hour .. " Minute: " .. Minute .. " Second: " .. Second
+end
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            setTime()
+        end)
+    end
+end)
+
+local function GetFruitList()
+    local fruitList = {}
+
+    for _, v in ipairs(game.Workspace:GetDescendants()) do
+        if v:IsA("Model") and v:FindFirstChild("Name") and string.find(v.Name, "Fruit") then
+            table.insert(fruitList, "🍎 " .. v.Name)
+        end
+    end
+
+    return #fruitList > 0 and table.concat(fruitList, "\n") or "No fruit found."
+end
+
+task.spawn(function()
+    local startTime = tick()
+    
+    while task.wait(1) do
+        local fruitText = GetFruitList()
+        Statusbf.Text = "\n\n🍍 Fruits:\n" .. fruitText
+    end
+end)
+
+local Players = game:GetService("Players")
+local playerCount = #game:GetService("Players"):GetPlayers()
+
+
+require(game.ReplicatedStorage:WaitForChild("Notification")).new(
+            "TBoyRoblox Hub ~ Auto Nhặt Fruit"
+        ):Display()
+
+require(game.ReplicatedStorage:WaitForChild("Notification")).new(
+            "Loading..."
+        ):Display()
+
+local function round(n)
+    return math.floor(tonumber(n) + 0.5)
+end
+
+local Number = math.random(1, 1000000)
+local DevilFruitESP = true
+local isVietnamese = true
+
+local function isnil(value)
+    return value == nil
+end
+
+function UpdateDevilChams()
+    for _, v in pairs(game.Workspace:GetChildren()) do
+        pcall(function()
+            if DevilFruitESP then
+                if string.find(v.Name, "Fruit") and not isnil(v:FindFirstChild("Handle")) then
+                    if not v.Handle:FindFirstChild('NameEsp' .. Number) then
+                        local bill = Instance.new('BillboardGui', v.Handle)
+                        bill.Name = 'NameEsp' .. Number
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1, 200, 1, 30)
+                        bill.Adornee = v.Handle
+                        bill.AlwaysOnTop = true
+
+                        local name = Instance.new('TextLabel', bill)
+                        name.Font = Enum.Font.GothamSemibold
+                        name.FontSize = Enum.FontSize.Size14
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1, 0, 1, 0)
+                        name.TextYAlignment = Enum.TextYAlignment.Top
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        name.TextColor3 = Color3.new(1, 0, 0)
+                        name.Text = (isVietnamese and "Fruit" or "Fruit")
+                    else
+                        local textLabel = v.Handle['NameEsp' .. Number].TextLabel
+                        textLabel.Text = (isVietnamese and "Fruit" or "Fruit")
+                    end
+                end
+            else
+                if not isnil(v:FindFirstChild("Handle")) and v.Handle:FindFirstChild('NameEsp' .. Number) then
+                    v.Handle:FindFirstChild('NameEsp' .. Number):Destroy()
+                end
+            end
+        end)
+    end
+end
+
+spawn(function()
+    while wait(1) do
+        UpdateDevilChams()
+    end
+end)
+
+repeat
+    wait()
+until game.IsLoaded and (game.Players.LocalPlayer or game.Players.PlayerAdded:Wait()) and
+    (game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait())
+
+game.Players.LocalPlayer.Idled:connect(
+    function()
+        while wait(3) do
+            if l then
+                game.VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                game.VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+            end
+        end
+    end
+)
+
+local a = game.Players.LocalPlayer
+local b = a.Character
+local c = game.TweenService
+local d = Instance.new("BodyVelocity")
+d.MaxForce = Vector3.new(1 / 0, 1 / 0, 1 / 0)
+d.Velocity = Vector3.new()
+d.Name = "bV"
+local e = Instance.new("BodyAngularVelocity")
+e.AngularVelocity = Vector3.new()
+e.MaxTorque = Vector3.new(1 / 0, 1 / 0, 1 / 0)
+e.Name = "bAV"
+
+local fruitsFound = false
+
+for f, f in next, workspace:GetChildren() do
+    if f.Name:find("Fruit") and (f:IsA("Tool") or f:IsA("Model")) then
+        fruitsFound = true
+        
+        game.StarterGui:SetCore(
+            "SendNotification",
+            {
+                Title = "Matsune Hub",
+                Text = "Tween to fruit ✅",
+                Duration = 10
+            }
+        )
+        
+        repeat
+            local d = d:Clone()
+            d.Parent = b.HumanoidRootPart
+            local e = e:Clone()
+            e.Parent = b.HumanoidRootPart
+            local a =
+                c:Create(
+                b.HumanoidRootPart,
+                TweenInfo.new((a:DistanceFromCharacter(f.Handle.Position) - 150) / 300, Enum.EasingStyle.Linear),
+                {CFrame = f.Handle.CFrame + Vector3.new(0, f.Handle.Size.Y, 0)}
+            )
+            a:Play()
+            a.Completed:Wait()
+            b.HumanoidRootPart.CFrame = f.Handle.CFrame
+            d:Destroy()
+            e:Destroy()
+            wait(1)
+        until f.Parent ~= workspace
+        wait(1)
+        game.StarterGui:SetCore(
+            "SendNotification",
+            {
+                Title = "Matsune Hub",
+                Text = "Fruit picked successfully:" .. f.Name,
+                Duration = 10
+            }
+        )
+
+        local a =
+            b:FindFirstChildOfClass("Tool") and b:FindFirstChildOfClass("Tool").Name:find("Fruit") and
+            b:FindFirstChildOfClass("Tool") or
+            (function()
+                for a, a in a.Backpack:GetChildren() do
+                    if a.Name:find("Fruit") then
+                        return a
+                    end
+                end
+            end)()
+        
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+            "StoreFruit",
+            a:GetAttribute("OriginalName"),
+            a
+        )
+    end
+end
+
+if not fruitsFound then
+    game.StarterGui:SetCore(
+        "SendNotification",
+        {
+            Title = "Matsune Hub",
+            Text = "No Fruit Available ❌",
+            Duration = 5
+        }
+    )
+end
+
+local serverHopNotified = false 
+
+local a = game.JobId
+repeat
+    task.spawn(
+        pcall,
+        function()
+            Time = 0.1
+            repeat
+                wait()
+            until game:IsLoaded()
+            wait(Time)
+            local a = game.PlaceId
+            local b = {}
+            local c = ""
+            local d = os.date("!*t").hour
+            local e = false
+            function TPReturner()
+                local e
+                if c == "" then
+                    e =
+                        game.HttpService:JSONDecode(
+                        game:HttpGet(
+                            "https://games.roblox.com/v1/games/" .. a .. "/servers/Public?sortOrder=Asc&limit=100"
+                        )
+                    )
+                else
+                    e =
+                        game.HttpService:JSONDecode(
+                        game:HttpGet(
+                            "https://games.roblox.com/v1/games/" ..
+                                a .. "/servers/Public?sortOrder=Asc&limit=100&cursor=" .. c
+                        )
+                    )
+                end
+                local f = ""
+                if e.nextPageCursor and e.nextPageCursor ~= "null" and e.nextPageCursor ~= nil then
+                    c = e.nextPageCursor
+                end
+                local c = 0
+                for e, e in pairs(e.data) do
+                    local g = true
+                    f = tostring(e.id)
+                    if tonumber(e.maxPlayers) > tonumber(e.playing) then
+                        for a, a in pairs(b) do
+                            if c ~= 0 then
+                                if f == tostring(a) then
+                                    g = false
+                                end
+                            else
+                                if tonumber(d) ~= tonumber(a) then
+                                    local a =
+                                        pcall(
+                                        function()
+                                            delfile("NotSameServers.json")
+                                            b = {}
+                                            table.insert(b, d)
+                                        end
+                                    )
+                                end
+                            end
+                            c = c + 1
+                        end
+                        if g == true then
+                            table.insert(b, f)
+                            wait()
+                            pcall(
+                                function()
+                                    writefile("NotSameServers.json", game:GetService("HttpService"):JSONEncode(b))
+                                    wait()
+                                    game:GetService("TeleportService"):TeleportToPlaceInstance(
+                                        a,
+                                        f,
+                                        game.Players.LocalPlayer
+                                    )
+                                end
+                            )
+                            wait(4)
+                        end
+                    end
+                end
+            end
+            function Teleport()
+                while wait() do
+                    pcall(
+                        function()
+                            TPReturner()
+                            if c ~= "" then
+                                TPReturner()
+                            end
+                        end
+                    )
+                end
+            end
+
+            if not serverHopNotified then
+                game.StarterGui:SetCore(
+                    "SendNotification",
+                    {
+                        Title = "Matsune Hub",
+                        Text = "Switching Server...",
+                        Duration = 10
+                    }
+                )
+                serverHopNotified = true
+            end
+
+            Teleport()
+        end
+    )
+    wait()
+until game.JobId ~= a
+function PostWebhook(Url, message)
+    local request = http_request or request or HttpPost or syn.request
+    local data =
+        request(
+        {
+            Url = Url,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = game:GetService("HttpService"):JSONEncode(message)
+        }
+    )
+    return ""
+end
